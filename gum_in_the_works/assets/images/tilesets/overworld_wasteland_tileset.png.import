@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfcvusoouiw4m"
-path="res://.godot/imported/mc_spritesheet.png-55c490368e7b7a1263ff2dadbcc7e3b2.ctex"
+uid="uid://dlkb0rst2ij4u"
+path="res://.godot/imported/overworld_wasteland_tileset.png-60e8f2ef462ecefb09912dfedb0e6bdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite_sheets/mc_spritesheet.png"
-dest_files=["res://.godot/imported/mc_spritesheet.png-55c490368e7b7a1263ff2dadbcc7e3b2.ctex"]
+source_file="res://assets/images/tilesets/overworld_wasteland_tileset.png"
+dest_files=["res://.godot/imported/overworld_wasteland_tileset.png-60e8f2ef462ecefb09912dfedb0e6bdc.ctex"]
 
 [params]
 
