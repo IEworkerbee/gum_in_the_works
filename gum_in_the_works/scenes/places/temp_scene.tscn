@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://6tywdjgv2kh8"]
 
 [ext_resource type="Texture2D" uid="uid://dbp7u32daf27g" path="res://assets/images/tilesets/gum_tileset.png" id="1_1f55m"]
-[ext_resource type="Texture2D" uid="uid://dlkb0rst2ij4u" path="res://assets/images/tilesets/overworld_wasteland_tileset.png" id="2_loc2o"]
+[ext_resource type="Texture2D" uid="uid://dlkb0rst2ij4u" path="res://assets/images/tilesets/overworld_wasteland_tileset.png" id="2_1f55m"]
 [ext_resource type="PackedScene" uid="uid://bf0kvy82q15il" path="res://scenes/characters/main_character.tscn" id="3_j2uqh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ksgxd"]
@@ -23,7 +23,7 @@ texture_region_size = Vector2i(32, 32)
 1:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nrdml"]
-texture = ExtResource("2_loc2o")
+texture = ExtResource("2_1f55m")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
