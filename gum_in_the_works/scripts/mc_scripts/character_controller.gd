@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var _player: AnimatedSprite2D = $AnimatedSprite2D
-@onready var _pickup_area: Area2D = $PickupArea
+@onready var _interacting_area: Area2D = $InteractingArea
 
 @export var speed := 200
 @export var inventory: Inventory
@@ -33,15 +33,20 @@ func _process(_delta):
 	elif Input.is_action_pressed("down"):
 		_player.play("walk_forward")
 		facing = "forward_idle"
-	elif Input.is_action_pressed("interact"):
-		print("Interacting")
-		for body in _pickup_area.get_overlapping_bodies():
-			print("Body found")
-			print(body)
+	elif Input.is_action_just_pressed("interact"):
+		for body in _interacting_area.get_overlapping_bodies():
 			if body.is_in_group("harvestable"):
 				var item: Inv_Item = body.harvest()
 				inventory.add_item(item)
 				body.queue_free()
+				return 1
+			elif body.name == "MotherGum":
+				var success: int = inventory.remove_item(body.get_item_to_consume())
+				if success == 1:
+					# Expansion code here
+					pass
+				return 1
+			
 	else:
 		_player.stop()
 		_player.play(facing)

@@ -64,9 +64,4 @@ position = Vector2(67, -33)
 
 [node name="MainCharacter" parent="." instance=ExtResource("3_j2uqh")]
 position = Vector2(-56, -17)
-
-[node name="RiboseCrystal2" parent="." instance=ExtResource("4_loc2o")]
-position = Vector2(94, 27)
-
-[node name="RiboseCrystal3" parent="." instance=ExtResource("4_loc2o")]
-position = Vector2(-40, 51)
+speed = 200

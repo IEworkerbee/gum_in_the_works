@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqvmo"]
 size = Vector2(18, 9)
 
-[node name="StaticBody2D" type="StaticBody2D" groups=["harvestable"]]
+[node name="RiboseCrystal" type="StaticBody2D" groups=["harvestable"]]
 script = ExtResource("1_8b5ol")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

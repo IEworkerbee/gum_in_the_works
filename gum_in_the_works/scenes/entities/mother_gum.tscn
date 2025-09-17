@@ -1,7 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cforhpobtne5l"]
+[gd_scene load_steps=4 format=3 uid="uid://cforhpobtne5l"]
 
 [ext_resource type="Texture2D" uid="uid://ccvbxq36v7bqx" path="res://assets/images/entities/mother_gum.png" id="1_56ii0"]
+[ext_resource type="Script" uid="uid://dfgmpnaisducu" path="res://scripts/entities/mother_gum.gd" id="1_a3bwc"]
 
-[node name="Sprite2D" type="Sprite2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_56ii0"]
+radius = 8.0
+
+[node name="MotherGum" type="StaticBody2D"]
+script = ExtResource("1_a3bwc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, -8)
 texture = ExtResource("1_56ii0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -8)
+shape = SubResource("CircleShape2D_56ii0")
