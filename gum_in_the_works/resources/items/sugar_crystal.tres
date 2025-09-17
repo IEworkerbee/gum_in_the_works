@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inv_Item" load_steps=3 format=3 uid="uid://d1v6j7klvsgk5"]
+
+[ext_resource type="Script" uid="uid://b2vfl7yex01k" path="res://scripts/items/inventory_item.gd" id="1_6limo"]
+[ext_resource type="Texture2D" uid="uid://d3oet84ab6uq5" path="res://assets/images/items/ribose_crystal.png" id="2_off5l"]
+
+[resource]
+script = ExtResource("1_6limo")
+name = "sugar_crystal"
+texture = ExtResource("2_off5l")
+metadata/_custom_type_script = "uid://b2vfl7yex01k"
