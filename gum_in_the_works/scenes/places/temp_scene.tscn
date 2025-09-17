@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://6tywdjgv2kh8"]
+[gd_scene load_steps=8 format=4 uid="uid://6tywdjgv2kh8"]
 
 [ext_resource type="Texture2D" uid="uid://dbp7u32daf27g" path="res://assets/images/tilesets/gum_tileset.png" id="1_1f55m"]
 [ext_resource type="Texture2D" uid="uid://dlkb0rst2ij4u" path="res://assets/images/tilesets/overworld_wasteland_tileset.png" id="2_1f55m"]
 [ext_resource type="PackedScene" uid="uid://bf0kvy82q15il" path="res://scenes/characters/main_character.tscn" id="3_j2uqh"]
+[ext_resource type="PackedScene" uid="uid://7fswc3jk3a1q" path="res://scenes/entities/ribose_crystal.tscn" id="4_loc2o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ksgxd"]
 texture = ExtResource("1_1f55m")
@@ -56,3 +57,6 @@ tile_set = SubResource("TileSet_x6soy")
 
 [node name="mc" parent="." instance=ExtResource("3_j2uqh")]
 position = Vector2(0, -1)
+
+[node name="Node2D" parent="." instance=ExtResource("4_loc2o")]
+position = Vector2(-62, -20)

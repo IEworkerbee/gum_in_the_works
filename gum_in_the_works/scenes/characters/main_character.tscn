@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bf0kvy82q15il"]
+[gd_scene load_steps=23 format=3 uid="uid://bf0kvy82q15il"]
 
-[ext_resource type="Script" uid="uid://clk3b0etfpjt3" path="res://scripts/mc_scripts/character_body_2d.gd" id="1_wmkwl"]
+[ext_resource type="Script" uid="uid://clk3b0etfpjt3" path="res://scripts/mc_scripts/character_controller.gd" id="1_wmkwl"]
+[ext_resource type="Resource" uid="uid://wt72fkny1uvy" path="res://resources/mc_resources/inventory.tres" id="2_rv8sq"]
 [ext_resource type="Texture2D" uid="uid://bfcvusoouiw4m" path="res://assets/images/sprite_sheets/mc_spritesheet.png" id="2_wmkwl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvl38"]
@@ -173,18 +174,25 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_8yqgs"]
 radius = 5.09902
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_g01af"]
+radius = 22.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_wmkwl")
+inventory = ExtResource("2_rv8sq")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2q423")
 animation = &"walk_right"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_8yqgs")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="PickupArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_g01af")

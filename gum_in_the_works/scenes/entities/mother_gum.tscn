@@ -2,8 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://ccvbxq36v7bqx" path="res://assets/images/entities/mother_gum.png" id="1_56ii0"]
 
-[node name="Node2D" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D"]
 position = Vector2(8, -8)
 texture = ExtResource("1_56ii0")
