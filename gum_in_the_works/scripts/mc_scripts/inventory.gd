@@ -29,6 +29,7 @@ func add_item(item : Inv_Item) -> int:
 func remove_item(item: Inv_Item) -> int:
 	var index: int = data.find(item)
 	if index == -1:
+		print("No sugar")
 		return -1
 	counts[index] -= 1
 	if counts[index] == 0:

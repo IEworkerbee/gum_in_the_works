@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://7fswc3jk3a1q"]
+[gd_scene load_steps=5 format=3 uid="uid://7fswc3jk3a1q"]
 
 [ext_resource type="Script" uid="uid://cpks0pht2my1q" path="res://scripts/items/ribose_crystal.gd" id="1_8b5ol"]
 [ext_resource type="Texture2D" uid="uid://dkbjsw1ulfm4i" path="res://assets/images/entities/ribose_crystal.png" id="1_qqvmo"]
+[ext_resource type="Resource" uid="uid://d1v6j7klvsgk5" path="res://resources/items/sugar_crystal.tres" id="2_kumnv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqvmo"]
 size = Vector2(18, 9)
 
 [node name="RiboseCrystal" type="StaticBody2D" groups=["harvestable"]]
 script = ExtResource("1_8b5ol")
+sugar_crystal_resource = ExtResource("2_kumnv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(14, -14)
