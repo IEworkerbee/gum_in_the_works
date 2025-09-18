@@ -34,19 +34,21 @@ func _process(_delta):
 		_player.play("walk_forward")
 		facing = "forward_idle"
 	elif Input.is_action_just_pressed("interact"):
-		for body in _interacting_area.get_overlapping_bodies():
-			if body.is_in_group("harvestable"):
-				var item: Inv_Item = body.harvest()
-				inventory.add_item(item)
-				body.queue_free()
-				return 1
-			elif body.name == "MotherGum":
-				var success: int = inventory.remove_item(body.get_item_to_consume())
-				if success == 1:
-					# Expansion code here
-					pass
-				return 1
-			
+		interact()
 	else:
 		_player.stop()
 		_player.play(facing)
+
+func interact():
+	var interactables: Array[Node2D]
+	var bodies: Array[Node2D] = _interacting_area.get_overlapping_bodies()
+	interactables = bodies.filter(filter_interactable)
+	if interactables.size() != 0:
+		interactables.sort_custom(sort_by_priority)
+		interactables[0].interact()
+
+func sort_by_priority(a: Node2D, b: Node2D):
+	return a.priority < b.priority
+	
+func filter_interactable(a: Node2D):
+	return a.is_in_group("interactable")

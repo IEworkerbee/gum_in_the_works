@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cforhpobtne5l"]
+[gd_scene load_steps=6 format=3 uid="uid://cforhpobtne5l"]
 
 [ext_resource type="Texture2D" uid="uid://ccvbxq36v7bqx" path="res://assets/images/entities/mother_gum.png" id="1_56ii0"]
 [ext_resource type="Script" uid="uid://dfgmpnaisducu" path="res://scripts/entities/mother_gum.gd" id="1_a3bwc"]
+[ext_resource type="Resource" uid="uid://d1v6j7klvsgk5" path="res://resources/items/sugar_crystal.tres" id="2_y54bc"]
+[ext_resource type="Resource" uid="uid://wt72fkny1uvy" path="res://resources/mc_resources/inventory.tres" id="3_23tv1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56ii0"]
 radius = 8.0
 
-[node name="MotherGum" type="StaticBody2D"]
+[node name="MotherGum" type="StaticBody2D" groups=["interactable"]]
 script = ExtResource("1_a3bwc")
+ribose_crystal = ExtResource("2_y54bc")
+inventory = ExtResource("3_23tv1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, -8)
