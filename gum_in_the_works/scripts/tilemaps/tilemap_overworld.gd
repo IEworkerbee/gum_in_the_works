@@ -22,7 +22,6 @@ func _set_tile(directions: Array, tile_set_index: int, map_coords: Vector2i):
 	var dimension = self.tile_set.get_source(tile_set_index).get_atlas_grid_size()
 	
 	var total = (8 * int(directions.has("top"))) + (4 * int(directions.has("bottom"))) + (2 * int(directions.has("left"))) + int(directions.has("right"))
-	print(total)
 	x = total % dimension.y
 	y = ceil(total / dimension.x)
 	
@@ -37,9 +36,11 @@ func filter_texture_cells(coord: Vector2i, atlas_id: int) -> bool:
 func filter_non_texture_cells(coord: Vector2i, atlas_id: int) -> bool:
 	return self.get_cell_source_id(coord) == atlas_id
 	
-func filter_texture_cells_placeable(coord: Vector2i, atlas_id: int, coord_of_placeable: Vector2i) -> bool:
-	# b = atlas id of placeable tile | c = placeable tile coordinate
-	return self.get_cell_source_id(coord) == atlas_id and self.get_cell_atlas_coords(coord) == coord_of_placeable
+func filter_texture_cells_placeable(coord: Vector2i, atlas_id: int, coord_of_placeable: Vector2i, center: Vector2i, distance_from_center: int) -> bool:
+	var within: bool = false
+	if abs(coord.x - center.x) + abs(coord.y - center.y) <= distance_from_center:
+		within = true
+	return self.get_cell_source_id(coord) == atlas_id and self.get_cell_atlas_coords(coord) == coord_of_placeable and within
 
 func vector_to_direction(adjacent_coord: Vector2i, original_coord: Vector2i) -> String:
 	var vect_d: Vector2i = original_coord - adjacent_coord

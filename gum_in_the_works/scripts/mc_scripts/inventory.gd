@@ -17,11 +17,9 @@ func add_item(item : Inv_Item) -> int:
 		index = data.find(null)
 		data[index] = item
 		counts[index] = 1
-		print(counts[index])
 		return 1
 	else:
 		counts[index] += 1
-		print(counts[index])
 		return 1
 	
 		
@@ -29,18 +27,16 @@ func add_item(item : Inv_Item) -> int:
 func remove_item(item: Inv_Item) -> int:
 	var index: int = data.find(item)
 	if index == -1:
-		print("No sugar")
+		# No inventory item
 		return -1
 	counts[index] -= 1
 	if counts[index] == 0:
+		# Removed last item
 		var size: int = data.size()
 		data[index] = null
 		data = data.filter(func(x): return x != null)
 		data.resize(size)
 		counts = counts.filter(func(x): return x != 0)
 		counts.resize(size)
-		print("Out of sugar")	
-	else:
-		print(counts[index])
 	return 1
 	
