@@ -3,15 +3,18 @@ extends TileMapLayer
 func place_tile_smart(coordinate: Vector2i, atlas_id: int, is_first: bool = true):
 	# Places a tile in a specific layer, and updates terrain around to fit styling.
 	var surrounding_cells = self.get_surrounding_cells(coordinate)
-	var surrounding_non_cells_placable = surrounding_cells.filter(filter_cells.bind(atlas_id))
-	var surrounding_true_cells = surrounding_cells.filter(filter_non_cells.bind(atlas_id))
-	var directions: Array = surrounding_non_cells_placable.map(vector_to_direction.bind(coordinate))
+	var surrounding_non_texture_cells = surrounding_cells.filter(filter_texture_cells.bind(atlas_id))
+	var surrounding_texture_cells = surrounding_cells.filter(filter_non_texture_cells.bind(atlas_id))
+	var directions: Array = surrounding_non_texture_cells.map(vector_to_direction.bind(coordinate))
+	
 	_set_tile(directions, atlas_id, coordinate)
 	if is_first:
-		for coord in surrounding_true_cells:
+		# update neighbors
+		for coord in surrounding_texture_cells:
 			place_tile_smart(coord, atlas_id, false)
 
 func _set_tile(directions: Array, tile_set_index: int, map_coords: Vector2i):
+	# updates tile at coordinate with given input directions for connective sides
 	var x: int
 	var y: int
 	
@@ -27,14 +30,19 @@ func _set_tile(directions: Array, tile_set_index: int, map_coords: Vector2i):
 	
 	self.set_cell(map_coords, tile_set_index, coordinate)
 
-func filter_cells(a: Vector2i, b: int) -> bool:
-	return self.get_cell_source_id(a) != b
+func filter_texture_cells(coord: Vector2i, atlas_id: int) -> bool:
+	# Returns if coordinate is not in specified atlas 
+	return self.get_cell_source_id(coord) != atlas_id
 	
-func filter_non_cells(a: Vector2i, b: int) -> bool:
-	return self.get_cell_source_id(a) == b
+func filter_non_texture_cells(coord: Vector2i, atlas_id: int) -> bool:
+	return self.get_cell_source_id(coord) == atlas_id
 	
-func vector_to_direction(a: Vector2i, o: Vector2i) -> String:
-	var vect_d: Vector2i = o - a
+func filter_texture_cells_placeable(coord: Vector2i, atlas_id: int, coord_of_placeable: Vector2i) -> bool:
+	# b = atlas id of placeable tile | c = placeable tile coordinate
+	return self.get_cell_source_id(coord) == atlas_id and self.get_cell_atlas_coords(coord) == coord_of_placeable
+
+func vector_to_direction(adjacent_coord: Vector2i, original_coord: Vector2i) -> String:
+	var vect_d: Vector2i = original_coord - adjacent_coord
 	var direction: String
 	if vect_d == Vector2i(0, 1):
 		direction = "top"
