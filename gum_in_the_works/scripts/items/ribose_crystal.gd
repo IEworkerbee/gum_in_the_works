@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var sugar_crystal_resource: Inv_Item
-@export var inventory: Inventory
+@onready var sugar_crystal_resource: Inv_Item = load("res://resources/items/ribose_crystal.tres")
+@onready var inventory: Inventory = load("res://resources/mc_resources/inventory.tres")
 
 var priority: int = 0
 

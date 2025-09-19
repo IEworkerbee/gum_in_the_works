@@ -12,5 +12,8 @@
 [node name="Plant" type="Node2D" parent="."]
 script = ExtResource("1_xk868")
 growth_sprites = Array[Texture2D]([ExtResource("2_1cocq"), ExtResource("3_w3f6a"), ExtResource("4_0sth7"), ExtResource("5_au8b6"), ExtResource("6_tmfff")])
+time_interval = Vector2(5, 10)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("6_tmfff")
