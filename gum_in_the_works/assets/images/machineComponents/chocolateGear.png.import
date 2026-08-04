@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccvbxq36v7bqx"
-path="res://.godot/imported/mother_gum.png-a6faee66cdc7d1150d35326e369d2bfa.ctex"
+uid="uid://cpjwtuk6ihthn"
+path="res://.godot/imported/chocolateGear.png-0f3c863e7c4049305acb33119760cfef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/entities/mother_gum.png"
-dest_files=["res://.godot/imported/mother_gum.png-a6faee66cdc7d1150d35326e369d2bfa.ctex"]
+source_file="res://assets/images/machineComponents/chocolateGear.png"
+dest_files=["res://.godot/imported/chocolateGear.png-0f3c863e7c4049305acb33119760cfef.ctex"]
 
 [params]
 

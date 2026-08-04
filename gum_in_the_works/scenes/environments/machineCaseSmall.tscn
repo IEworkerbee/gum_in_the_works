@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://do6a1v5gd34uo"]
+
+[ext_resource type="Texture2D" uid="uid://dduuxqpoctlum" path="res://assets/images/general/casing.png" id="1_gq26x"]
+[ext_resource type="Shader" uid="uid://b4hew0j7mkkbt" path="res://shaders/pixel_scaler.gdshader" id="1_p1kyq"]
+[ext_resource type="PackedScene" uid="uid://dxah7q53qhps0" path="res://scenes/machine_components/gear.tscn" id="2_0q5s5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0q5s5"]
+size = Vector2(256, 256)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0q5s5"]
+shader = ExtResource("1_p1kyq")
+
+[node name="Node2D" type="Node2D" unique_id=1200616944]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1489416300]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=550805813]
+shape = SubResource("RectangleShape2D_0q5s5")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1516419887]
+material = SubResource("ShaderMaterial_0q5s5")
+texture = ExtResource("1_gq26x")
+
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D" unique_id=2021515516]
+
+[node name="Gear" parent="." unique_id=1565604112 instance=ExtResource("2_0q5s5")]

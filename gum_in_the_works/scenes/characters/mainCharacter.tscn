@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://bf0kvy82q15il"]
+[gd_scene format=3 uid="uid://bf0kvy82q15il"]
 
-[ext_resource type="Script" uid="uid://clk3b0etfpjt3" path="res://scripts/mc_scripts/character_controller.gd" id="1_wmkwl"]
+[ext_resource type="Script" uid="uid://clk3b0etfpjt3" path="res://scripts/mc_scripts/characterController.gd" id="1_wmkwl"]
 [ext_resource type="Resource" uid="uid://wt72fkny1uvy" path="res://resources/mc_resources/inventory.tres" id="2_rv8sq"]
 [ext_resource type="Texture2D" uid="uid://bfcvusoouiw4m" path="res://assets/images/sprite_sheets/mc_spritesheet.png" id="2_wmkwl"]
 

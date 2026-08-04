@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dxah7q53qhps0"]
+
+[ext_resource type="Texture2D" uid="uid://cpjwtuk6ihthn" path="res://assets/images/machineComponents/chocolateGear.png" id="1_b7s8w"]
+[ext_resource type="Shader" uid="uid://b4hew0j7mkkbt" path="res://shaders/pixel_scaler.gdshader" id="2_gryjj"]
+[ext_resource type="Script" uid="uid://vsglblqbfo4i" path="res://scripts/machineComponents/gear.gd" id="2_wt86d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wt86d"]
+shader = ExtResource("2_gryjj")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_85vt2"]
+radius = 12.0
+
+[node name="Gear" type="Node2D" unique_id=1565604112]
+script = ExtResource("2_wt86d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1306401446]
+material = SubResource("ShaderMaterial_wt86d")
+texture = ExtResource("1_b7s8w")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1540198311]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=225895800]
+shape = SubResource("CircleShape2D_85vt2")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

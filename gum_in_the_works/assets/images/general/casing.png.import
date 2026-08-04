@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccvbxq36v7bqx"
-path="res://.godot/imported/mother_gum.png-a6faee66cdc7d1150d35326e369d2bfa.ctex"
+uid="uid://dduuxqpoctlum"
+path="res://.godot/imported/casing.png-cf49e0538df4c7c1ff2c45a3e1c45ca3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/entities/mother_gum.png"
-dest_files=["res://.godot/imported/mother_gum.png-a6faee66cdc7d1150d35326e369d2bfa.ctex"]
+source_file="res://assets/images/general/casing.png"
+dest_files=["res://.godot/imported/casing.png-cf49e0538df4c7c1ff2c45a3e1c45ca3.ctex"]
 
 [params]
 
