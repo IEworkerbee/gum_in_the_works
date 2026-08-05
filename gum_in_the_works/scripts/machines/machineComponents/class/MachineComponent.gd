@@ -50,15 +50,18 @@ func _input(event: InputEvent) -> void:
 
 		# Allows an machine component to be boltable
 		elif event.keycode == KEY_B and draggable:
-			print("Pinning")
-			var pin_joint = PinJoint2D.new()
-			pin_joint.global_position = get_bolt_point()
-			print(get_bolt_point())
-
+			var bolt_position: Vector2 = get_bolt_point()
+			var pin_joint: PinJoint2D = PinJoint2D.new()
+			pin_joint.global_position = bolt_position
 			pin_joint.node_a = get_parent().get_node("Static-backboard").get_path()
 			pin_joint.node_b = self.get_path()
 			get_parent().add_child(pin_joint)
 
+			var bolt_sprite: Sprite2D = Sprite2D.new()
+			add_child(bolt_sprite)
+			bolt_sprite.texture = load("res://assets/images/machineComponents/bolt.png")
+			bolt_sprite.global_position = bolt_position
+			
 
 func save_init_state():
 	init_state.transform = global_transform
