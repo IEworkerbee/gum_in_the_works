@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dxah7q53qhps0"]
 
 [ext_resource type="Texture2D" uid="uid://cpjwtuk6ihthn" path="res://assets/images/machineComponents/chocolateGear.png" id="1_b7s8w"]
+[ext_resource type="Script" uid="uid://vsglblqbfo4i" path="res://scripts/machines/machineComponents/gear.gd" id="1_gryjj"]
 [ext_resource type="Shader" uid="uid://b4hew0j7mkkbt" path="res://shaders/pixel_scaler.gdshader" id="2_gryjj"]
-[ext_resource type="Script" uid="uid://vsglblqbfo4i" path="res://scripts/machineComponents/gear.gd" id="2_wt86d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wt86d"]
 shader = ExtResource("2_gryjj")
@@ -18,7 +18,7 @@ size = Vector2(6, 24)
 
 [node name="Gear" type="RigidBody2D" unique_id=1653398527]
 gravity_scale = 0.0
-script = ExtResource("2_wt86d")
+script = ExtResource("1_gryjj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1306401446]
 material = SubResource("ShaderMaterial_wt86d")
@@ -34,6 +34,14 @@ shape = SubResource("RectangleShape2D_85vt2")
 
 [node name="CollisionShape2D-TD" type="CollisionShape2D" parent="." unique_id=290391716]
 shape = SubResource("RectangleShape2D_ge1mr")
+
+[node name="boltspot0" type="ColorRect" parent="." unique_id=1350879841]
+visible = false
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+color = Color(1, 1, 1, 0.2)
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

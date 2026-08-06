@@ -1,0 +1,3 @@
+extends Node2D
+
+signal toggle_play_machine_sim

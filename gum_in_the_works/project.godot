@@ -21,7 +21,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*uid://b25u07mx1d80j"
+Global="*uid://pg1mt6m7u7pc"
+EventBus="*uid://cleu3ec4fbiws"
+
+[debug]
+
+gdscript/warnings/unused_signal=0
 
 [display]
 

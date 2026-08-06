@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bi00xyc550vup"]
 
-[ext_resource type="Script" uid="uid://cpcfaxujdh2rg" path="res://scripts/machineComponents/sourceGear.gd" id="1_585fj"]
 [ext_resource type="Shader" uid="uid://b4hew0j7mkkbt" path="res://shaders/pixel_scaler.gdshader" id="1_oc1u5"]
 [ext_resource type="Texture2D" uid="uid://cpjwtuk6ihthn" path="res://assets/images/machineComponents/chocolateGear.png" id="2_585fj"]
+[ext_resource type="Script" uid="uid://cpcfaxujdh2rg" path="res://scripts/machines/machineComponents/sourceGear.gd" id="4_go3lm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_go3lm"]
 shader = ExtResource("1_oc1u5")
@@ -18,7 +18,7 @@ size = Vector2(6, 24)
 
 [node name="SourceGear" type="RigidBody2D" unique_id=1134598878]
 gravity_scale = 0.0
-script = ExtResource("1_585fj")
+script = ExtResource("4_go3lm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1557899829]
 material = SubResource("ShaderMaterial_go3lm")

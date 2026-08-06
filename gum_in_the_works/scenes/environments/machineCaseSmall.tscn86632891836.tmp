@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://dduuxqpoctlum" path="res://assets/images/general/casing.png" id="1_gq26x"]
 [ext_resource type="Shader" uid="uid://b4hew0j7mkkbt" path="res://shaders/pixel_scaler.gdshader" id="1_p1kyq"]
-[ext_resource type="Script" uid="uid://b5fw5xjsc1kag" path="res://scripts/machines/class/MachineCase.gd" id="1_ruwuo"]
 [ext_resource type="PackedScene" uid="uid://dxah7q53qhps0" path="res://scenes/machine_components/gear.tscn" id="2_0q5s5"]
 [ext_resource type="PackedScene" uid="uid://bi00xyc550vup" path="res://scenes/machine_components/sourceGear.tscn" id="4_h2clv"]
 
@@ -27,9 +26,7 @@ distance = -128.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85vt2"]
 size = Vector2(256, 256)
 
-[node name="Node2D" type="Node2D" unique_id=1200616944 node_paths=PackedStringArray("boltmodeButton")]
-script = ExtResource("1_ruwuo")
-boltmodeButton = NodePath("BoltButton")
+[node name="Node2D" type="Node2D" unique_id=1200616944]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1489416300]
 
@@ -62,9 +59,3 @@ collision_layer = 2
 
 [node name="Collision-backboard" type="CollisionShape2D" parent="Static-backboard" unique_id=1543338404]
 shape = SubResource("RectangleShape2D_85vt2")
-
-[node name="BoltButton" type="Button" parent="." unique_id=825046650]
-offset_left = 135.0
-offset_top = 102.0
-offset_right = 158.0
-offset_bottom = 123.0

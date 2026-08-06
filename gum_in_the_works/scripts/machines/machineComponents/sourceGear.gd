@@ -7,8 +7,11 @@ func _process(delta: float) -> void:
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
   super(state)
-  if is_playing:
+  if Global.is_playing:
     apply_torque(torque)
 
-func get_bolt_point() -> Vector2:
-  return global_position
+func get_bolt_points():
+  return [global_position]
+
+func get_max_bolts():
+  return 1
