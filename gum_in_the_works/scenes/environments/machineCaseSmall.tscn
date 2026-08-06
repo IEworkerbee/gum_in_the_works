@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b5fw5xjsc1kag" path="res://scripts/machines/class/MachineCase.gd" id="1_ruwuo"]
 [ext_resource type="PackedScene" uid="uid://dxah7q53qhps0" path="res://scenes/machine_components/gear.tscn" id="2_0q5s5"]
 [ext_resource type="PackedScene" uid="uid://bi00xyc550vup" path="res://scenes/machine_components/sourceGear.tscn" id="4_h2clv"]
+[ext_resource type="Texture2D" uid="uid://ryrnfunc32tq" path="res://assets/images/UI/icons/bolt_icon.png" id="6_fhepm"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h2clv"]
 distance = -128.0
@@ -26,6 +27,17 @@ distance = -128.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85vt2"]
 size = Vector2(256, 256)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipwt"]
+bg_color = Color(1, 1, 1, 0.52156866)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_85vt2"]
+shader = ExtResource("1_p1kyq")
 
 [node name="Node2D" type="Node2D" unique_id=1200616944 node_paths=PackedStringArray("boltmodeButton")]
 script = ExtResource("1_ruwuo")
@@ -64,7 +76,19 @@ collision_layer = 2
 shape = SubResource("RectangleShape2D_85vt2")
 
 [node name="BoltButton" type="Button" parent="." unique_id=825046650]
-offset_left = 135.0
+offset_left = 136.0
 offset_top = 102.0
 offset_right = 158.0
 offset_bottom = 123.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_tipwt")
+toggle_mode = true
+
+[node name="TextureRect" type="TextureRect" parent="BoltButton" unique_id=969009362]
+material = SubResource("ShaderMaterial_85vt2")
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 19.0
+offset_bottom = 18.0
+mouse_filter = 2
+texture = ExtResource("6_fhepm")

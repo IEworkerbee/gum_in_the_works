@@ -4,6 +4,7 @@ extends RigidBody2D
 var draggable = false
 var offset: Vector2
 var do_restore = false
+var hovering = false
 var init_state = {
 	"transform" = global_transform,
 	"linear_velocity" = linear_velocity,
@@ -27,19 +28,22 @@ func _process(_delta: float) -> void:
 			Global.is_dragging = false
 
 func _on_area_2d_mouse_entered():
-	if not Global.is_dragging:
-		draggable = true
+	if !Global.is_playing:
+		if !Global.is_dragging and !Global.is_boltmode and bolts.is_empty():
+			draggable = true
 		sprite.scale = Vector2(1.125, 1.125)
+	hovering = true
 
 func _on_area_2d_mouse_exited():
-	if not Global.is_dragging:
+	if !Global.is_dragging and !Global.is_playing:
 		draggable = false;
-		sprite.scale = Vector2(1, 1)
+	sprite.scale = Vector2(1, 1)
+	hovering = false
 
 func _input(event: InputEvent) -> void:
 	# Allows an machine component to be boltable
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_B and draggable and !Global.is_playing and Global.is_boltmode:
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and hovering and !Global.is_playing and Global.is_boltmode:
 			if !has_node("BoltSprite2D"):
 				var bolt_position: Vector2 = get_bolt_points()[0]
 				var pin_joint: PinJoint2D = PinJoint2D.new()
@@ -54,15 +58,18 @@ func _input(event: InputEvent) -> void:
 				add_child(bolt_sprite)
 				bolt_sprite.texture = load("res://assets/images/machineComponents/bolt.png")
 				bolt_sprite.global_position = bolt_position
+				bolts.append(1)
 			else:
 				$BoltSprite2D.queue_free()
 				await $BoltSprite2D.tree_exited
 				get_parent().get_node("BoltPinJoint2D" + name).queue_free()
 				await get_parent().get_node("BoltPinJoint2D" + name).tree_exited
+				bolts.remove_at(0)
 
 func _on_toggle_play_machine_sim():
 	if Global.is_playing:
 		save_init_state()
+		sprite.scale = Vector2(1, 1)
 	else:
 		sleeping = false
 		load_init_state()
