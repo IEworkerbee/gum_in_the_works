@@ -13,6 +13,7 @@ var init_state = {
 }
 var bolts: Array[String] = []
 @onready var sprite = $Sprite2D
+@onready var area2d = $Area2D
 @export var bolt_points: Array[Button]
 @export var max_bolts: int
 
@@ -20,16 +21,26 @@ func _ready() -> void:
 	EventBus.toggle_play_machine_sim.connect(_on_toggle_play_machine_sim)
 	for button in bolt_points:
 		button.pressed.connect(_on_bolt_button_pressed.bind(button))
+	#area2d.contact_monitor = true
+	#area2d.max_contacts_reported = 1
 
 func _process(_delta: float) -> void:
 	if draggable:
 		if Input.is_action_just_pressed("click"):
+			save_init_state()
 			offset = get_global_mouse_position() - global_position
+			collision_layer = 0
+			collision_mask = 0
 			Global.is_dragging = true;
 
 		if Input.is_action_pressed("click"):
 			global_position = get_global_mouse_position() - offset
+
 		elif Input.is_action_just_released("click"):
+			if area2d.get_overlapping_bodies().size() != 0:
+				load_init_state()
+			collision_layer = 1
+			collision_mask = 1
 			Global.is_dragging = false
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
