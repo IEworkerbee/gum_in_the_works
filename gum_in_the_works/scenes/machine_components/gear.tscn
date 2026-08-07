@@ -16,9 +16,19 @@ size = Vector2(24, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ge1mr"]
 size = Vector2(6, 24)
 
-[node name="Gear" type="RigidBody2D" unique_id=1653398527]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85vt2"]
+bg_color = Color(0.6, 0.6, 0.6, 0.2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjlb5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j3cq"]
+bg_color = Color(0.6, 0.6, 0.6, 0.8)
+
+[node name="Gear" type="RigidBody2D" unique_id=1653398527 node_paths=PackedStringArray("bolt_points")]
 gravity_scale = 0.0
 script = ExtResource("1_gryjj")
+bolt_points = [NodePath("Button0")]
+max_bolts = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1306401446]
 material = SubResource("ShaderMaterial_wt86d")
@@ -35,13 +45,15 @@ shape = SubResource("RectangleShape2D_85vt2")
 [node name="CollisionShape2D-TD" type="CollisionShape2D" parent="." unique_id=290391716]
 shape = SubResource("RectangleShape2D_ge1mr")
 
-[node name="boltspot0" type="ColorRect" parent="." unique_id=1350879841]
+[node name="Button0" type="Button" parent="." unique_id=1870756131]
 visible = false
 offset_left = -2.0
 offset_top = -2.0
 offset_right = 2.0
 offset_bottom = 2.0
-color = Color(1, 1, 1, 0.2)
+theme_override_styles/normal = SubResource("StyleBoxFlat_85vt2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rjlb5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7j3cq")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
