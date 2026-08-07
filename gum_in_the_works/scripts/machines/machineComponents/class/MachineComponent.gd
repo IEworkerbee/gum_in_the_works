@@ -6,6 +6,7 @@ var offset: Vector2
 var do_restore = false
 var hovering = false
 var bolt_points_visible = false
+var spawner = false
 var init_state = {
 	"transform" = global_transform,
 	"linear_velocity" = linear_velocity,
@@ -37,11 +38,16 @@ func _process(_delta: float) -> void:
 			global_position = get_global_mouse_position() - offset
 
 		elif Input.is_action_just_released("click"):
-			if area2d.get_overlapping_bodies().size() != 0:
-				load_init_state()
+			if area2d.get_overlapping_bodies().size() != 0 or -128 >= global_position.x or 128 <= global_position.x or -128 >= global_position.y or 128 <= global_position.y:
+				if spawner == true:
+					queue_free()
+				else:
+					load_init_state()
 			collision_layer = 1
 			collision_mask = 1
 			Global.is_dragging = false
+			if spawner == true:
+				spawner = false;
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if do_restore:
@@ -57,7 +63,7 @@ func _on_area_2d_mouse_entered():
 		if !Global.is_dragging and !Global.is_boltmode and bolts.is_empty():
 			draggable = true
 			sprite.scale = Vector2(1.125, 1.125)
-		if !Global.is_dragging and Global.is_boltmode:
+		if !Global.is_dragging and Global.is_boltmode and !spawner:
 			display_bolt_points()
 	hovering = true
 
@@ -69,16 +75,17 @@ func _on_area_2d_mouse_exited():
 	hovering = false
 
 func _on_toggle_play_machine_sim():
-	if Global.is_playing:
-		save_init_state()
-		hide_bolt_points()
-		sprite.scale = Vector2(1, 1)
-	else:
-		sleeping = false
-		load_init_state()
-	gravity_scale = 1.0 if Global.is_playing else 0.0
-	if hovering == true:
-		_on_area_2d_mouse_entered()
+	if !spawner:
+		if Global.is_playing:
+			save_init_state()
+			hide_bolt_points()
+			sprite.scale = Vector2(1, 1)
+		else:
+			sleeping = false
+			load_init_state()
+		gravity_scale = 1.0 if Global.is_playing else 0.0
+		if hovering == true:
+			_on_area_2d_mouse_entered()
 
 func _on_bolt_button_pressed(bolt_point: Button):
 	if bolts.has(bolt_point.name):

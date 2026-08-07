@@ -3,26 +3,23 @@
 [ext_resource type="Texture2D" uid="uid://dduuxqpoctlum" path="res://assets/images/general/casing.png" id="1_gq26x"]
 [ext_resource type="Shader" uid="uid://b4hew0j7mkkbt" path="res://shaders/pixel_scaler.gdshader" id="1_p1kyq"]
 [ext_resource type="Script" uid="uid://b5fw5xjsc1kag" path="res://scripts/machines/class/MachineCase.gd" id="1_ruwuo"]
+[ext_resource type="PackedScene" uid="uid://dxah7q53qhps0" path="res://scenes/machine_components/gear.tscn" id="2_0q5s5"]
+[ext_resource type="PackedScene" uid="uid://bi00xyc550vup" path="res://scenes/machine_components/sourceGear.tscn" id="4_h2clv"]
+[ext_resource type="PackedScene" uid="uid://bubyiwx3likhv" path="res://scenes/tools/spawner.tscn" id="5_fhepm"]
 [ext_resource type="Texture2D" uid="uid://cpjwtuk6ihthn" path="res://assets/images/machineComponents/chocolateGear.png" id="5_ruwuo"]
 [ext_resource type="Texture2D" uid="uid://ryrnfunc32tq" path="res://assets/images/UI/icons/bolt_icon.png" id="6_fhepm"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h2clv"]
-distance = -128.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjlb5"]
+size = Vector2(7, 302)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0q5s5"]
-shader = ExtResource("1_p1kyq")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7j3cq"]
+size = Vector2(256, 23)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_85vt2"]
-normal = Vector2(-1, 0)
-distance = -128.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw8bx"]
+size = Vector2(256, 23)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ge1mr"]
-normal = Vector2(0, 1)
-distance = -128.0
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rjlb5"]
-normal = Vector2(1, 0)
-distance = -128.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewua8"]
+size = Vector2(8, 302)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85vt2"]
 size = Vector2(256, 256)
@@ -38,32 +35,32 @@ corner_detail = 5
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_85vt2"]
 shader = ExtResource("1_p1kyq")
 
-[node name="Node2D" type="Node2D" unique_id=1200616944 node_paths=PackedStringArray("boltmodeButton", "gearSpawnButton", "sourceGearSpawnButton")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0q5s5"]
+shader = ExtResource("1_p1kyq")
+
+[node name="MachineCaseSmall" type="Node2D" unique_id=1200616944 node_paths=PackedStringArray("boltmodeButton")]
 script = ExtResource("1_ruwuo")
 boltmodeButton = NodePath("BoltButton")
-gearSpawnButton = NodePath("GearSpawnButton")
-sourceGearSpawnButton = NodePath("SourceGearSpawnButton")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2021515516]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1489416300]
 
-[node name="CollisionShape2D-F" type="CollisionShape2D" parent="StaticBody2D" unique_id=550805813]
-top_level = true
-shape = SubResource("WorldBoundaryShape2D_h2clv")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=187515547]
+position = Vector2(131.5, 0)
+shape = SubResource("RectangleShape2D_rjlb5")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1516419887]
-material = SubResource("ShaderMaterial_0q5s5")
-texture = ExtResource("1_gq26x")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1233807926]
+position = Vector2(0, -139.5)
+shape = SubResource("RectangleShape2D_7j3cq")
 
-[node name="Camera2D" type="Camera2D" parent="StaticBody2D" unique_id=2021515516]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=380681354]
+position = Vector2(0, 139.5)
+shape = SubResource("RectangleShape2D_aw8bx")
 
-[node name="CollisionShape2D-R" type="CollisionShape2D" parent="StaticBody2D" unique_id=1310050663]
-shape = SubResource("WorldBoundaryShape2D_85vt2")
-
-[node name="CollisionShape2D-T" type="CollisionShape2D" parent="StaticBody2D" unique_id=2038525535]
-shape = SubResource("WorldBoundaryShape2D_ge1mr")
-
-[node name="CollisionShape2D-L" type="CollisionShape2D" parent="StaticBody2D" unique_id=1644278694]
-shape = SubResource("WorldBoundaryShape2D_rjlb5")
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1139429439]
+position = Vector2(-132, 0)
+shape = SubResource("RectangleShape2D_ewua8")
 
 [node name="Static-backboard" type="StaticBody2D" parent="." unique_id=179437935]
 collision_layer = 2
@@ -72,9 +69,9 @@ collision_layer = 2
 shape = SubResource("RectangleShape2D_85vt2")
 
 [node name="BoltButton" type="Button" parent="." unique_id=825046650]
-offset_left = 135.0
+offset_left = 139.0
 offset_top = 74.0
-offset_right = 167.0
+offset_right = 171.0
 offset_bottom = 106.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_tipwt")
 toggle_mode = true
@@ -96,50 +93,22 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_fhepm")
 
-[node name="GearSpawnButton" type="Button" parent="." unique_id=1505673109]
-offset_left = 135.0
-offset_top = 25.0
-offset_right = 167.0
-offset_bottom = 57.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_tipwt")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1516419887]
+material = SubResource("ShaderMaterial_0q5s5")
+texture = ExtResource("1_gq26x")
 
-[node name="TextureRect" type="TextureRect" parent="GearSpawnButton" unique_id=1680472471]
-material = SubResource("ShaderMaterial_85vt2")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="GearSpawner" parent="." unique_id=527796479 instance=ExtResource("5_fhepm")]
+offset_left = 139.0
+offset_top = 37.0
+offset_right = 171.0
+offset_bottom = 69.0
 texture = ExtResource("5_ruwuo")
+scene = ExtResource("2_0q5s5")
 
-[node name="SourceGearSpawnButton" type="Button" parent="." unique_id=1957087832]
-offset_left = 135.0
-offset_top = -25.0
-offset_right = 167.0
-offset_bottom = 7.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_tipwt")
-
-[node name="TextureRect" type="TextureRect" parent="SourceGearSpawnButton" unique_id=1942792049]
-material = SubResource("ShaderMaterial_85vt2")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="SourceGearSpawner" parent="." unique_id=2005697819 instance=ExtResource("5_fhepm")]
+offset_left = 139.0
+offset_top = -1.0
+offset_right = 171.0
+offset_bottom = 31.0
 texture = ExtResource("5_ruwuo")
+scene = ExtResource("4_h2clv")
