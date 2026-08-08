@@ -15,22 +15,22 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfw4f"]
-size = Vector2(32, 32)
+size = Vector2(64, 64.5)
 
 [node name="Spawner" type="TextureRect" unique_id=527796479]
 material = SubResource("ShaderMaterial_ci6yc")
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
 mouse_filter = 2
 script = ExtResource("3_wmteq")
 
 [node name="Panel" type="Panel" parent="." unique_id=1899246122]
 show_behind_parent = true
 layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+offset_right = 64.0
+offset_bottom = 64.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hjkmh")
 
@@ -38,5 +38,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_hjkmh")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1490886923]
-position = Vector2(16, 16)
+position = Vector2(32, 31.75)
 shape = SubResource("RectangleShape2D_hfw4f")

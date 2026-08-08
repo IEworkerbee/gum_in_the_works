@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dviq5r2y2mkf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_85vt2"]
+radius = 17.0
+
+[node name="SnapPoint" type="Node2D" unique_id=1007555704]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1264730891]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1145046280]
+shape = SubResource("CircleShape2D_85vt2")

@@ -22,8 +22,8 @@ func _ready() -> void:
 	EventBus.toggle_play_machine_sim.connect(_on_toggle_play_machine_sim)
 	for button in bolt_points:
 		button.pressed.connect(_on_bolt_button_pressed.bind(button))
-	#area2d.contact_monitor = true
-	#area2d.max_contacts_reported = 1
+		contact_monitor = true
+		max_contacts_reported = 1
 
 func _process(_delta: float) -> void:
 	if draggable:
@@ -38,11 +38,13 @@ func _process(_delta: float) -> void:
 			global_position = get_global_mouse_position() - offset
 
 		elif Input.is_action_just_released("click"):
-			if area2d.get_overlapping_bodies().size() != 0 or -128 >= global_position.x or 128 <= global_position.x or -128 >= global_position.y or 128 <= global_position.y:
+			if !is_valid_spot(global_position):
 				if spawner == true:
 					queue_free()
 				else:
 					load_init_state()
+			else:
+				on_place()
 			collision_layer = 1
 			collision_mask = 1
 			Global.is_dragging = false
@@ -134,3 +136,31 @@ func save_init_state():
 
 func load_init_state():
 	do_restore = true
+
+func on_place():
+	pass
+
+func is_valid_spot(pos_to_check: Vector2) -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var current_transform = global_transform
+	var offset_l = pos_to_check - current_transform.origin
+
+	for child in get_children():
+		if child is CollisionShape2D:
+			var shape_node: CollisionShape2D = child
+			var parameters = PhysicsShapeQueryParameters2D.new()
+			parameters.shape = shape_node.shape
+			parameters.collision_mask = 1
+			parameters.exclude = [get_rid()]
+			var target_shape_transform = shape_node.global_transform
+			target_shape_transform.origin += offset_l
+			parameters.transform = target_shape_transform
+			
+			var results = space_state.intersect_shape(parameters)
+			if results.size() > 0:
+				return false
+
+	if -128 >= pos_to_check.x or 128 <= pos_to_check.x or -128 >= pos_to_check.y or 128 <= pos_to_check.y:
+		return false
+	else:
+		return true

@@ -1,4 +1,4 @@
-extends MachineComponent
+extends GearComponent
 
 @export var torque = 500
 

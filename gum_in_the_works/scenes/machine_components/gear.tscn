@@ -3,18 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://cpjwtuk6ihthn" path="res://assets/images/machineComponents/chocolateGear.png" id="1_b7s8w"]
 [ext_resource type="Script" uid="uid://vsglblqbfo4i" path="res://scripts/machines/machineComponents/gear.gd" id="1_gryjj"]
 [ext_resource type="Shader" uid="uid://b4hew0j7mkkbt" path="res://shaders/pixel_scaler.gdshader" id="2_gryjj"]
+[ext_resource type="PackedScene" uid="uid://dviq5r2y2mkf" path="res://scenes/tools/snapPoint.tscn" id="2_shmvx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wt86d"]
 shader = ExtResource("2_gryjj")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_85vt2"]
-radius = 12.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_85vt2"]
-size = Vector2(24, 6)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge1mr"]
-size = Vector2(6, 24)
+radius = 28.160255
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85vt2"]
 bg_color = Color(0.6, 0.6, 0.6, 0.2)
@@ -24,9 +19,42 @@ bg_color = Color(0.6, 0.6, 0.6, 0.2)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j3cq"]
 bg_color = Color(0.6, 0.6, 0.6, 0.8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gryjj"]
+size = Vector2(2, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shmvx"]
+size = Vector2(2, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a44i5"]
+size = Vector2(2, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ndlu"]
+size = Vector2(2.177698, 54.627106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gm0q"]
+size = Vector2(2, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq4ey"]
+size = Vector2(1.9999988, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogvig"]
+size = Vector2(2, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ub83j"]
+size = Vector2(2, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76ubr"]
+size = Vector2(2, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0ksb"]
+size = Vector2(2, 56)
+
 [node name="Gear" type="RigidBody2D" unique_id=1653398527 node_paths=PackedStringArray("bolt_points")]
+mass = 0.01
 gravity_scale = 0.0
 script = ExtResource("1_gryjj")
+distance_snappoints = 58.0
+SNAP_POINT = ExtResource("2_shmvx")
 bolt_points = [NodePath("Button0")]
 max_bolts = 1
 
@@ -39,12 +67,6 @@ texture = ExtResource("1_b7s8w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=225895800]
 shape = SubResource("CircleShape2D_85vt2")
 
-[node name="CollisionShape2D-LR" type="CollisionShape2D" parent="." unique_id=599211002]
-shape = SubResource("RectangleShape2D_85vt2")
-
-[node name="CollisionShape2D-TD" type="CollisionShape2D" parent="." unique_id=290391716]
-shape = SubResource("RectangleShape2D_ge1mr")
-
 [node name="Button0" type="Button" parent="." unique_id=1870756131]
 visible = false
 offset_left = -2.0
@@ -54,6 +76,47 @@ offset_bottom = 2.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_85vt2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_rjlb5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7j3cq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=290420969]
+shape = SubResource("RectangleShape2D_gryjj")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="." unique_id=1062737921]
+rotation = 0.31415927
+shape = SubResource("RectangleShape2D_shmvx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=442905388]
+rotation = 0.62831855
+shape = SubResource("RectangleShape2D_a44i5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=85888227]
+position = Vector2(0.26286104, 0.17360637)
+rotation = 0.9424778
+shape = SubResource("RectangleShape2D_8ndlu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=561358809]
+rotation = 1.2566371
+shape = SubResource("RectangleShape2D_2gm0q")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=609328880]
+position = Vector2(0, 5.960465e-07)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_uq4ey")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="." unique_id=1496534814]
+rotation = 1.8849556
+shape = SubResource("RectangleShape2D_ogvig")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="." unique_id=1881147540]
+rotation = 2.1991148
+shape = SubResource("RectangleShape2D_ub83j")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="." unique_id=1890457771]
+rotation = 2.5132742
+shape = SubResource("RectangleShape2D_76ubr")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="." unique_id=1153735751]
+rotation = 2.8274333
+shape = SubResource("RectangleShape2D_n0ksb")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
