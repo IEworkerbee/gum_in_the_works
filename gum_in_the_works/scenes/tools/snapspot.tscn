@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://dviq5r2y2mkf"]
+[gd_scene format=3 uid="uid://bopws7augjw2h"]
 
-[ext_resource type="Script" uid="uid://cs3xn2uilsi06" path="res://scripts/machines/machinetools/snapPoint.gd" id="1_khsmn"]
+[ext_resource type="Script" uid="uid://cs3xn2uilsi06" path="res://scripts/machines/machinetools/snapPoint.gd" id="1_fltit"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_85vt2"]
 radius = 17.0
 
 [node name="SnapPoint" type="Node2D" unique_id=1007555704]
-script = ExtResource("1_khsmn")
+script = ExtResource("1_fltit")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1264730891]
 collision_layer = 4
@@ -14,3 +14,9 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1145046280]
 shape = SubResource("CircleShape2D_85vt2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=904831546]
+offset_left = -17.0
+offset_top = -17.0
+offset_right = 17.0
+offset_bottom = 17.0

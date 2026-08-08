@@ -27,11 +27,18 @@ func _ready() -> void:
 	snapPointPositions[3] = Vector2(0, -distance_snappoints)
 	snapPointPositions[4] = Vector2(-dx, -dy)
 	snapPointPositions[5] = Vector2(-dx, dy)
-
+		
 func on_place():
+	super()
 	for i in 6:
 		if is_valid_spot(snapPointPositions[i] + global_position):
-			snapPoints[i].visible = true
+			snapPoints[i].get_node("Area2D").monitoring = true
 			snapPoints[i].global_position = snapPointPositions[i] + global_position
-		else:
-			snapPoints[i].visible = false
+
+func on_drag():
+	super()
+	stop_monitoring()
+
+func stop_monitoring():
+	for i in 6:
+		snapPoints[i].get_node("Area2D").monitoring = false

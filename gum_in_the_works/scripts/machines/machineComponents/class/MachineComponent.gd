@@ -6,6 +6,7 @@ var offset: Vector2
 var do_restore = false
 var hovering = false
 var bolt_points_visible = false
+var is_snap_suggested = false
 var spawner = false
 var init_state = {
 	"transform" = global_transform,
@@ -28,11 +29,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if draggable:
 		if Input.is_action_just_pressed("click"):
-			save_init_state()
-			offset = get_global_mouse_position() - global_position
-			collision_layer = 0
-			collision_mask = 0
-			Global.is_dragging = true;
+			on_drag()
 
 		if Input.is_action_pressed("click"):
 			global_position = get_global_mouse_position() - offset
@@ -43,13 +40,7 @@ func _process(_delta: float) -> void:
 					queue_free()
 				else:
 					load_init_state()
-			else:
-				on_place()
-			collision_layer = 1
-			collision_mask = 1
-			Global.is_dragging = false
-			if spawner == true:
-				spawner = false;
+			on_place()
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if do_restore:
@@ -138,7 +129,19 @@ func load_init_state():
 	do_restore = true
 
 func on_place():
-	pass
+	collision_layer = 1
+	collision_mask = 1
+	Global.is_dragging = false
+	if spawner == true:
+		spawner = false;
+
+
+func on_drag():
+	save_init_state()
+	offset = get_global_mouse_position() - global_position
+	collision_layer = 4
+	collision_mask = 4
+	Global.is_dragging = true;
 
 func is_valid_spot(pos_to_check: Vector2) -> bool:
 	var space_state = get_world_2d().direct_space_state
